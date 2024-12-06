@@ -123,7 +123,8 @@ def lasa_to_torch_stacked(dataset_names, start = 15):
     return pos, vel
 
 def get_rosenbrock_data(n=16, discrete = True):
-    loaded_data = np.load(f"/home/agokhale/Sean/GNCDS/data/rosenbrock_{n}.npz")
+    path = os.path.join(CURR_DIR, f"data/rosenbrock_{n}.npz")
+    loaded_data = np.load(path)
     pos = loaded_data['pos']
     vel = loaded_data['vel']
     pos_eq = torch.ones((1, n))
