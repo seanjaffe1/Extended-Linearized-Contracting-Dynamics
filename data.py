@@ -40,7 +40,7 @@ data_set_names = ['Angle',
         'Zshape',
         'heee']
 
-def load_data_from_config_new( data_config):
+def load_data_from_config( data_config):
     normalized = data_config['normalized'] if 'normalized' in data_config else False
     num_demos = data_config['num_demos']
     batch_size = data_config['batch_size'] if 'batch_size' in data_config else 1
@@ -133,19 +133,6 @@ def get_rosenbrock_data(n=16, discrete = True):
     else:
         return TrajData(torch.Tensor(pos), torch.Tensor(vel),pos_eq = pos_eq)
 
-def get_custom_dataset(name, num_demos = None, normalized = False, discrete=False):
-    if name == "rotational":
-        loaded_data = np.load("/home/agokhale/Sean/GNCDS/data/rotational_np.npz")
-        pos = loaded_data['saved_trajectories'].transpose(0,2,1)
-        vel = loaded_data["dxdts"].transpose(0,2,1)
-    elif name == "inefficient":
-        loaded_data = np.load("/home/agokhale/Sean/GNCDS/data/inefficient_np.npz")
-        pos = loaded_data['saved_trajectories'].transpose(0,2,1)
-        vel = loaded_data["dxdts"].transpose(0,2,1)
-    if discrete:
-        return DiscreteTrajData(torch.Tensor(pos), torch.Tensor(vel), num_demos=num_demos)
-    return TrajData(torch.Tensor(pos), torch.Tensor(vel), num_demos=num_demos)
-    
 
 def get_pendulum_dataset(n,  num_demos = None, discrete = False, normalized = False):
     """
@@ -153,8 +140,6 @@ def get_pendulum_dataset(n,  num_demos = None, discrete = False, normalized = Fa
     num_demos: int
     discrete: bool
     normalized: bool
-
-    
     """
     pos, vel = pendulum_to_torch(n)
     eq = torch.zeros((1, 2 * n))
