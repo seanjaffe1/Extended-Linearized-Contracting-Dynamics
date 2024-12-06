@@ -1,5 +1,5 @@
 # Extended-Linearized-Contracting-Dynamics
-This is code for [Extended Lineariz]
+This is code for [Learning Neural Contracting Dynamics: Extended Linearization and Global Guarantees](https://neurips.cc/virtual/2024/poster/94690)
 
 
 ## Examples
