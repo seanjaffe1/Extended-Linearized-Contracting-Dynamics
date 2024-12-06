@@ -1,0 +1,9 @@
+einops==0.8.0
+matplotlib==3.9.3
+nflows==0.14
+numpy==2.1.3
+Pillow==11.0.0
+pyLasaDataset==0.1.1
+pyLasaDataset==0.1.1
+scipy==1.14.1
+torch==2.5.1
